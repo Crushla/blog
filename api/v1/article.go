@@ -8,7 +8,11 @@ import (
 	"strconv"
 )
 
-//添加文章
+// @Summary AddArticle
+// @Description 增加文章
+// @Produce json
+// @Success 200 {string} string "{"message": "success"}"
+// @Router /article/add [post]
 func AddArticle(c *gin.Context) {
 	var article models.Article
 	_ = c.ShouldBindJSON(&article)

@@ -2,9 +2,12 @@ package routers
 
 import (
 	v1 "blog/api/v1"
+	_ "blog/docs"
 	"blog/middleware"
 	"blog/utils"
 	"github.com/gin-gonic/gin"
+	gs "github.com/swaggo/gin-swagger"
+	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 func Init() *gin.Engine {
@@ -13,6 +16,7 @@ func Init() *gin.Engine {
 	r.Use(gin.Recovery())
 	r.Use(middleware.Logger())
 	r.Use(middleware.Cors())
+	r.GET("/swagger/*any", gs.WrapHandler(swaggerFiles.Handler))
 	Auth := r.Group("api/v1")
 	Auth.Use(middleware.JwtToken())
 	{

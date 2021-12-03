@@ -5,6 +5,7 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
+// article
 type Article struct {
 	Category Category `gorm:"foreignkey:Cid"`
 	gorm.Model
